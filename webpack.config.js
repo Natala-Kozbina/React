@@ -1,5 +1,8 @@
-path = require('path');
 const webpack = require('webpack');
+
+path = require('path');
+
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -13,18 +16,21 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                enforce: 'pre',
+                use: ['eslint-loader'],
+              },
+            {
                 test: /.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                exclude: /node_modules/
             },
             {
             test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                        use: ['css-loader', 'sass-loader']
+                        use: ['css-loader', 'sass-loader?sourceMap']
                     })
             },
             {
@@ -32,16 +38,18 @@ module.exports = {
                 loader: 'json'
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: [
-                    'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                    'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-              ]
-            }
+                test: /\.(jpe?g|png|gif|svg)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: 'img/[name].[ext]'
+                }
+            },
         ]
   },
   plugins: [
-      new CopyWebpackPlugin([{from: 'app/index.html', to: 'index.html'}, {from:'app/img/',to:'img/' }]),
-      new ExtractTextPlugin('style.css')
+      new CopyWebpackPlugin([{from: 'app/index.html', to: 'index.html'}]),
+      new ExtractTextPlugin('style.css'),
+      new CleanWebpackPlugin(['dist'])
   ]
 }

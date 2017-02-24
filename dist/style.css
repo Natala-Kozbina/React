@@ -1,2 +1,11 @@
+@charset "UTF-8";
 body {
-  background: yellow; }
+  width: 100%;
+  min-height: 100%;
+  background: url(img/sea.jpg) no-repeat;
+  background-size: cover;
+  /* Современные браузеры */ }
+
+.react__title {
+  color: blue;
+  font-size: 14px; }
