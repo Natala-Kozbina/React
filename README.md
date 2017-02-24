@@ -1,7 +1,11 @@
-ReactJS!
+# ReactJS!
 
-Installation
+## Installation
+    ```
     npm install
+    ```
 
-Development
+## Development
+    ```
     npm start
+    ```
