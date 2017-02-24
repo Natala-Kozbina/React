@@ -1,11 +1,13 @@
 # ReactJS!
 
 ## Installation
-    ```
-    npm install
-    ```
+
+```
+npm install
+```
 
 ## Development
-    ```
-    npm start
-    ```
+
+```
+npm start
+```
