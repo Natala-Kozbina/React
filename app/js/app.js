@@ -3,36 +3,43 @@ import "../css/main.scss"
 import ReactDOM from 'react-dom';
 import React from 'react';
 
+import App from './containers/app/app_start.js';
 
-// import app from './containers/app/index.js';
-
-function formatName(user) {
-  return user.firstName + ' ' + user.lastName;
-}
-
-const user = {
-  firstName: 'Harry',
-  lastName: 'Potter'
-};
-
-// const element = (
-//   <h1>
-//     Hello, {formatName(user)}!
-//   </h1>
+// function formatName(user) {
+//   return user.firstName + ' ' + user.lastName;
+// }
+//
+// const user = {
+//   firstName: 'Harry',
+//   lastName: 'Potter'
+// };
+//
+// const element = React.createElement(
+//   'h1',
+//   {className: 'greeting'},
+//   'Hello, ' + formatName(user) + '!'
+// );
+//
+// ReactDOM.render(
+//     // <App>
+//     // </App>,
+//     element,
+//      document.getElementById('react')
 // );
 
-const element = React.createElement(
-  'h1',
-  {className: 'greeting'},
-  'Hello, ' + formatName(user) + '!'
-);
+
+// var App = React.createClass({
+//     render: function () {
+//         return (
+//             <div>
+//                 7777
+//             </div>
+//         )
+//     }
+// })
 
 ReactDOM.render(
-    // <app />
-    element,
-     document.getElementById('react')
-);
-
-console.log(1);
-
+    < App />,
+    document.getElementById('react')
+)
 require ("../css/main.scss");

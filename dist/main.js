@@ -89,33 +89,46 @@ var _react = __webpack_require__(86);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _app_start = __webpack_require__(184);
+
+var _app_start2 = _interopRequireDefault(_app_start);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import app from './containers/app/index.js';
-
-function formatName(user) {
-  return user.firstName + ' ' + user.lastName;
-}
-
-var user = {
-  firstName: 'Harry',
-  lastName: 'Potter'
-};
-
-// const element = (
-//   <h1>
-//     Hello, {formatName(user)}!
-//   </h1>
+// function formatName(user) {
+//   return user.firstName + ' ' + user.lastName;
+// }
+//
+// const user = {
+//   firstName: 'Harry',
+//   lastName: 'Potter'
+// };
+//
+// const element = React.createElement(
+//   'h1',
+//   {className: 'greeting'},
+//   'Hello, ' + formatName(user) + '!'
+// );
+//
+// ReactDOM.render(
+//     // <App>
+//     // </App>,
+//     element,
+//      document.getElementById('react')
 // );
 
-var element = _react2.default.createElement('h1', { className: 'greeting' }, 'Hello, ' + formatName(user) + '!');
 
-_reactDom2.default.render(
-// <app />
-element, document.getElementById('react'));
+// var App = React.createClass({
+//     render: function () {
+//         return (
+//             <div>
+//                 7777
+//             </div>
+//         )
+//     }
+// })
 
-console.log(1);
-
+_reactDom2.default.render(_react2.default.createElement(_app_start2.default, null), document.getElementById('react'));
 __webpack_require__(0);
 
 /***/ }),
@@ -21731,6 +21744,55 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ }),
+/* 183 */,
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(86);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(85);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var News = _react2.default.createClass({
+  displayName: 'News',
+
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'news' },
+      '\u041A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E, \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435\u0442.'
+    );
+  }
+});
+
+var App = _react2.default.createClass({
+  displayName: 'App',
+
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'app_header' },
+      '\u0412\u0441\u0435\u043C \u043F\u0440\u0438\u0432\u0435\u0442, \u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 App!',
+      _react2.default.createElement(News, null)
+    );
+  }
+});
+
+exports.default = App;
 
 /***/ })
 /******/ ]);
