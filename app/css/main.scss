@@ -1,7 +1,7 @@
 body {
   width: 100%;
   min-height: 100%;
-  // background: url("./img/sea.jpg") no-repeat;
+  background: url("./../img/sea.jpg") no-repeat;
   background-size: cover; /* Современные браузеры */
 }
 
@@ -10,4 +10,9 @@ body {
     font-size: 20px;
     display: table;
     margin: 0 auto;
+}
+
+.app_header {
+    // background-color: pink;
+    color: blue;
 }

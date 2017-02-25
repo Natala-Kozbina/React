@@ -16,6 +16,7 @@ var App = React.createClass({
     return (
       <div className="app_header">
         Всем привет, я компонент App!
+        
         <News />
       </div>
     );

@@ -49,7 +49,7 @@ module.exports = {
   },
   plugins: [
       new CopyWebpackPlugin([{from: 'app/index.html', to: 'index.html'}]),
-      new ExtractTextPlugin('css/style.css'),
+      new ExtractTextPlugin('style.css'),
       new CleanWebpackPlugin(['dist'])
   ]
 }
