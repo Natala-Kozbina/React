@@ -1,23 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var News = React.createClass({
-  render: function() {
-    return (
-      <div className="news">
-        К сожалению, новостей нет.
-      </div>
-    );
+import News from '../news/news.js';
+import Comments from '../comments/comments.js';
+
+var my_news = [
+  {
+    author: 'Саша Печкин',
+    text: 'В четверг, четвертого числа...'
+  },
+  {
+    author: 'Просто Вася',
+    text: 'Считаю, что $ должен стоить 35 рублей!'
+  },
+  {
+    author: 'Гость',
+    text: 'Бесплатно. Скачать. Лучший сайт - http://localhost:3000'
   }
-});
+];
 
 var App = React.createClass({
   render: function() {
     return (
       <div className="app_header">
         Всем привет, я компонент App!
-        
-        <News />
+        <News data={my_news} />
+        <Comments />
       </div>
     );
   }
