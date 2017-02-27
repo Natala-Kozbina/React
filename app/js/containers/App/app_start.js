@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 
 import News from '../news/news.js';
 import Comments from '../comments/comments.js';
+import TotalNews from '../total_news/total_news.js';
+
+console.log("TotalNews - ", TotalNews);
 
 var my_news = [
   {
@@ -15,20 +18,42 @@ var my_news = [
   },
   {
     author: 'Гость',
-    text: 'Бесплатно. Скачать. Лучший сайт - http://localhost:3000'
-  }
+    text: 'Бесплатно. Скачать. Лучший сайт -мой сайт'
+},
+{
+  author: 'Иванов Иван Иванович',
+  text: 'Путешествия во времни'
+},
+{
+  author: 'Первов Наполеонович',
+  text: 'Уход от неизбезжного'
+},
+{
+  author: 'Александр Свияш',
+  text: 'Улыбнись, пока не поздно'
+}
 ];
 
 var App = React.createClass({
-  render: function() {
-    return (
-      <div className="app_header">
-        Всем привет, я компонент App!
-        <News data={my_news} />
-        <Comments />
-      </div>
-    );
-  }
+    render: function() {
+        return (
+            <div className="app_header">
+                Всем привет, я компонент App!
+                <table className="app_table">
+                    <thead>
+                        <tr>
+                            <th>N</th>
+                            <th>Autor</th>
+                            <th>News</th>
+                            </tr>
+                        </thead>
+                        <News data={my_news} />
+                    </table>
+                <TotalNews  data={my_news} />
+                <Comments />
+            </div>
+        );
+    }
 });
 
 export default App;

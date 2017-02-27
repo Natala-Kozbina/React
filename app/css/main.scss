@@ -6,13 +6,25 @@ body {
 }
 
 .react__title {
-    // color: blue;
     font-size: 20px;
     display: table;
     margin: 0 auto;
 }
 
 .app_header {
-    // background-color: pink;
     color: blue;
 }
+
+.app_table {
+    color: black;
+}
+
+table {
+       border-collapse: collapse;
+   }
+   table th,
+   table td {
+       padding: 0 5px;
+       border: 1px solid #000;
+       text-align: center;
+   }
