@@ -39,16 +39,9 @@ var App = React.createClass({
         return (
             <div className="app_header">
                 Всем привет, я компонент App!
-                <table className="app_table">
-                    <thead>
-                        <tr>
-                            <th>N</th>
-                            <th>Autor</th>
-                            <th>News</th>
-                            </tr>
-                        </thead>
+
                         <News data={my_news} />
-                    </table>
+                
                 <TotalNews  data={my_news} />
                 <Comments />
             </div>

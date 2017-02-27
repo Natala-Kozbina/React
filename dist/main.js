@@ -9460,7 +9460,7 @@ module.exports = ReactPropTypesSecret;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(21);
@@ -9488,65 +9488,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 console.log("TotalNews - ", _total_news2.default);
 
 var my_news = [{
-    author: 'Саша Печкин',
-    text: 'В четверг, четвертого числа...'
+  author: 'Саша Печкин',
+  text: 'В четверг, четвертого числа...'
 }, {
-    author: 'Просто Вася',
-    text: 'Считаю, что $ должен стоить 35 рублей!'
+  author: 'Просто Вася',
+  text: 'Считаю, что $ должен стоить 35 рублей!'
 }, {
-    author: 'Гость',
-    text: 'Бесплатно. Скачать. Лучший сайт -мой сайт'
+  author: 'Гость',
+  text: 'Бесплатно. Скачать. Лучший сайт -мой сайт'
 }, {
-    author: 'Иванов Иван Иванович',
-    text: 'Путешествия во времни'
+  author: 'Иванов Иван Иванович',
+  text: 'Путешествия во времни'
 }, {
-    author: 'Первов Наполеонович',
-    text: 'Уход от неизбезжного'
+  author: 'Первов Наполеонович',
+  text: 'Уход от неизбезжного'
 }, {
-    author: 'Александр Свияш',
-    text: 'Улыбнись, пока не поздно'
+  author: 'Александр Свияш',
+  text: 'Улыбнись, пока не поздно'
 }];
 
 var App = _react2.default.createClass({
-    displayName: 'App',
+  displayName: 'App',
 
-    render: function render() {
-        return _react2.default.createElement(
-            'div',
-            { className: 'app_header' },
-            '\u0412\u0441\u0435\u043C \u043F\u0440\u0438\u0432\u0435\u0442, \u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 App!',
-            _react2.default.createElement(
-                'table',
-                { className: 'app_table' },
-                _react2.default.createElement(
-                    'thead',
-                    null,
-                    _react2.default.createElement(
-                        'tr',
-                        null,
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'N'
-                        ),
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'Autor'
-                        ),
-                        _react2.default.createElement(
-                            'th',
-                            null,
-                            'News'
-                        )
-                    )
-                ),
-                _react2.default.createElement(_news2.default, { data: my_news })
-            ),
-            _react2.default.createElement(_total_news2.default, { data: my_news }),
-            _react2.default.createElement(_comments2.default, null)
-        );
-    }
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'app_header' },
+      '\u0412\u0441\u0435\u043C \u043F\u0440\u0438\u0432\u0435\u0442, \u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 App!',
+      _react2.default.createElement(_news2.default, { data: my_news }),
+      _react2.default.createElement(_total_news2.default, { data: my_news }),
+      _react2.default.createElement(_comments2.default, null)
+    );
+  }
 });
 
 exports.default = App;
@@ -9612,35 +9585,73 @@ var News = _react2.default.createClass({
 
     render: function render() {
         var data = this.props.data;
-        var newsTemplate = data.map(function (item, index) {
-            return _react2.default.createElement(
-                'tbody',
-                { key: index },
-                _react2.default.createElement(
-                    'tr',
-                    null,
+        var newsTemplate;
+
+        if (data.length > 0) {
+            newsTemplate = data.map(function (item, index) {
+                return _react2.default.createElement(
+                    'tbody',
+                    { key: index },
                     _react2.default.createElement(
-                        'th',
-                        { className: 'news__namber' },
-                        index + 1
-                    ),
-                    _react2.default.createElement(
-                        'th',
-                        { className: 'news__author' },
-                        item.author
-                    ),
-                    _react2.default.createElement(
-                        'th',
-                        { className: 'news__text' },
-                        item.text
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'th',
+                            { className: 'news__namber' },
+                            index + 1
+                        ),
+                        _react2.default.createElement(
+                            'th',
+                            { className: 'news__author' },
+                            item.author
+                        ),
+                        _react2.default.createElement(
+                            'th',
+                            { className: 'news__text' },
+                            item.text
+                        )
                     )
-                )
+                );
+            });
+        } else {
+            newsTemplate = _react2.default.createElement(
+                'p',
+                null,
+                ' \u041D\u043E\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435\u0442 '
             );
-        });
+        }
+
         return _react2.default.createElement(
             'div',
             { className: 'news' },
-            newsTemplate
+            _react2.default.createElement(
+                'table',
+                { className: 'app_table' },
+                _react2.default.createElement(
+                    'thead',
+                    null,
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'th',
+                            null,
+                            'N'
+                        ),
+                        _react2.default.createElement(
+                            'th',
+                            null,
+                            'Autor'
+                        ),
+                        _react2.default.createElement(
+                            'th',
+                            null,
+                            'News'
+                        )
+                    )
+                ),
+                newsTemplate
+            )
         );
     }
 });
@@ -9676,7 +9687,7 @@ var TotalNews = _react2.default.createClass({
         var data = this.props.data;
         return _react2.default.createElement(
             'strong',
-            null,
+            { className: 'app_totalNews' },
             '\u0412\u0441\u0435\u0433\u043E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439: ',
             data.length,
             ' '

@@ -25,3 +25,6 @@ table td {
   padding: 0 5px;
   border: 1px solid #000;
   text-align: center; }
+
+.app_totalNews {
+  color: green; }

@@ -6,7 +6,7 @@ var TotalNews = React.createClass({
   render: function() {
       var data = this.props.data;
       return (
-          <strong>Всего новостей: {data.length} </strong>
+          <strong className="app_totalNews">Всего новостей: {data.length} </strong>
       );
     }
 });
