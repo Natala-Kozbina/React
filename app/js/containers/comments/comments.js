@@ -3,12 +3,29 @@ import ReactDOM from 'react-dom';
 
 var Comments = React.createClass({
   render: function() {
-    return (
-      <div className="app_comments">
-        Нет новостей - комментировать нечего
-      </div>
-    );
+      var comment = this.props.comment;
+      console.log("comment - ", comment);
+      var commentTemplate;
+
+      if(comment.length > 0) {
+          commentTemplate = comment.map(function(item, index) {
+            return (
+                <p key={index}> комментарий № {index+1} - {item.comment}</p>
+            )
+          })
+      } else {
+          commentTemplate = <p> Новостей нет </p>
+      }
+       return (
+           <div>
+            { commentTemplate}
+           </div>
+       )
   }
+
 });
+
+
+
 
 export default Comments;

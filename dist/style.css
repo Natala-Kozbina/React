@@ -12,13 +12,16 @@ body {
   margin: 0 auto; }
 
 .app_header {
-  color: blue; }
+  color: #423d3d;
+  padding: 15px; }
 
 .app_table {
-  color: black; }
+  color: #423d3d; }
 
 table {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-bottom: 15px; }
 
 table th,
 table td {
@@ -28,3 +31,6 @@ table td {
 
 .app_totalNews {
   color: green; }
+
+.none {
+  display: none !important; }

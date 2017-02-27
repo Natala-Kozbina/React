@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 var News = React.createClass({
     render: function() {
         var data = this.props.data;
+        var update = this.props.update;
         var newsTemplate;
+        console.log('data - ', data);
+        console.log('update/update - ', update);
 
         if(data.length >0) {
             newsTemplate = data.map(function(item, index) {
@@ -24,8 +27,8 @@ var News = React.createClass({
 
         return (
             <div className="news">
-            <table className="app_table">
-                <thead>
+            <table className="app_table table-striped table-bordered">
+                <thead className={data.length > 0 ? "" : "none"}>
                     <tr>
                         <th>N</th>
                         <th>Autor</th>

@@ -1,49 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 import News from '../news/news.js';
+import myNews from '../datas/datas_news.js';
+import myComments from '../datas/datas_commets.js';
 import Comments from '../comments/comments.js';
 import TotalNews from '../total_news/total_news.js';
+import Search from '../search/search.js';
 
-console.log("TotalNews - ", TotalNews);
-
-var my_news = [
-  {
-    author: 'Саша Печкин',
-    text: 'В четверг, четвертого числа...'
-  },
-  {
-    author: 'Просто Вася',
-    text: 'Считаю, что $ должен стоить 35 рублей!'
-  },
-  {
-    author: 'Гость',
-    text: 'Бесплатно. Скачать. Лучший сайт -мой сайт'
-},
-{
-  author: 'Иванов Иван Иванович',
-  text: 'Путешествия во времни'
-},
-{
-  author: 'Первов Наполеонович',
-  text: 'Уход от неизбезжного'
-},
-{
-  author: 'Александр Свияш',
-  text: 'Улыбнись, пока не поздно'
-}
-];
+var my_news = myNews;
+var my_comments = myComments;
 
 var App = React.createClass({
+
+    getInitialState : function() {
+        return {
+          data:  my_news,
+          active: 0,
+          term: ''
+        }
+    },
+
+    updateData : function(config) {
+        // console.log('updateData/config - ', config);
+        this.setState(config);
+        console.log('this.state - ', this.state);
+        // return config;
+    },
+
     render: function() {
         return (
             <div className="app_header">
                 Всем привет, я компонент App!
-
-                        <News data={my_news} />
-                
+                <Search
+                    data={my_news}
+                    update={this.updateData} />
+                <News
+                    data={this.state.data}
+                    update={this.updateData}/>
                 <TotalNews  data={my_news} />
-                <Comments />
+                <Comments comment={my_comments}/>
             </div>
         );
     }
