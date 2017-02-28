@@ -16,7 +16,7 @@ var Dropdown = React.createClass({
                     type="button"
                     data-toggle="dropdown"
                     title="Choose one of the following...">
-                    <option className="dropdown-item" selected disabled>Выберите поле</option>
+                    <option className="dropdown-item" value=""selected disabled>Выберите поле</option>
                     <option className="dropdown-item" value="author">Author</option>
                     <option className="dropdown-item" value="news">News</option>
                 </select>

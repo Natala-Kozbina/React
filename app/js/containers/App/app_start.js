@@ -31,9 +31,7 @@ var App = React.createClass({
 
     myFunction : function(index) {
         var selectedField = index.target.value;
-        console.log('onChange -> ', selectedField);
         this.setState({selectedField: selectedField});
-        console.log(this.state);
     },
 
     render: function() {
