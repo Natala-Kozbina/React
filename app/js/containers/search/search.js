@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default ({ term, data, update }) => {
+export default ({ term, data, update, selectedField }) => {
     const dataSearch = e => {
         const value = e.target.value.toLowerCase();
+        // const choosenField = this.props.selectedField;
+
+
         const filter = data.filter(user => {
-            return user.author.toLowerCase().includes(value);
+            console.log('user[selectedField]', selectedField);
+            console.log('user[user]', user);
+            console.log('user[user]', user[selectedField]);
+            return user[selectedField].toLowerCase().includes(value);
         });
         update({
             data: filter,

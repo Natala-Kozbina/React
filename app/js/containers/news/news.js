@@ -15,7 +15,7 @@ var News = React.createClass({
                         <tr >
                             <th className="news__namber">{index+1}</th>
                             <th className="news__author">{item.author}</th>
-                            <th className="news__text">{item.text}</th>
+                            <th className="news__text">{item.news}</th>
                         </tr>
                     </tbody >
                 )

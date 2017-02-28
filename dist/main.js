@@ -9633,12 +9633,20 @@ var App = _react2.default.createClass({
         return {
             data: my_news,
             active: 0,
-            term: ''
+            term: '',
+            selectedField: ''
         };
     },
 
     updateData: function updateData(config) {
         this.setState(config);
+    },
+
+    myFunction: function myFunction(index) {
+        var selectedField = index.target.value;
+        console.log('onChange -> ', selectedField);
+        this.setState({ selectedField: selectedField });
+        console.log(this.state);
     },
 
     render: function render() {
@@ -9650,12 +9658,16 @@ var App = _react2.default.createClass({
                 null,
                 '\u041D\u043E\u0432\u043E\u0441\u0442\u0438'
             ),
-            _react2.default.createElement(_dropdown2.default, null),
+            _react2.default.createElement(_dropdown2.default, {
+                onSelectValue: this.myFunction
+            }),
             _react2.default.createElement(_search2.default, {
                 data: my_news,
+                selectedField: this.state.selectedField,
                 update: this.updateData }),
             _react2.default.createElement(_news2.default, {
                 data: this.state.data,
+
                 update: this.updateData }),
             _react2.default.createElement(_total_news2.default, { data: my_news }),
             _react2.default.createElement(_comments2.default, { comment: my_comments })
@@ -9754,19 +9766,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var myNews = [{
   author: 'Саша Печкин',
-  text: 'В четверг, четвертого числа...'
+  news: 'В четверг, четвертого числа...'
 }, {
   author: 'Просто Вася',
-  text: 'Считаю, что $ должен стоить 35 рублей!'
+  news: 'Считаю, что $ должен стоить 35 рублей!'
 }, {
   author: 'Иванов Иван Иванович',
-  text: 'Путешествия во времни'
+  news: 'Путешествия во времни'
 }, {
   author: 'Первов Наполеонович',
-  text: 'Уход от неизбезжного'
+  news: 'Уход от неизбезжного'
 }, {
   author: 'Александр Свияш',
-  text: 'Улыбнись, пока не поздно'
+  news: 'Улыбнись, пока не поздно'
 }];
 
 exports.default = myNews;
@@ -9800,26 +9812,23 @@ var Dropdown = _react2.default.createClass({
     displayName: 'Dropdown',
 
 
-    myFunction: function myFunction(index) {
-        var selectedField = index.target.value;
-        console.log('onChange -> ', selectedField);
-    },
-
     render: function render(e) {
-        // const data = this.props.data;
         return _react2.default.createElement(
             'div',
             { className: 'dropdown Primary' },
             _react2.default.createElement(
                 'select',
                 {
-                    // ref={(el) => this.select = el}
-                    onChange: this.myFunction,
-                    onSelect: this.selestFunction,
+                    onChange: this.props.onSelectValue,
                     className: ' btn-primary btn ',
                     type: 'button',
                     'data-toggle': 'dropdown',
                     title: 'Choose one of the following...' },
+                _react2.default.createElement(
+                    'option',
+                    { className: 'dropdown-item' },
+                    '\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u043B\u0435'
+                ),
                 _react2.default.createElement(
                     'option',
                     { className: 'dropdown-item', value: 'author' },
@@ -9890,7 +9899,7 @@ var News = _react2.default.createClass({
                         _react2.default.createElement(
                             'th',
                             { className: 'news__text' },
-                            item.text
+                            item.news
                         )
                     )
                 );
@@ -9960,12 +9969,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (_ref) {
     var term = _ref.term,
         data = _ref.data,
-        update = _ref.update;
+        update = _ref.update,
+        selectedField = _ref.selectedField;
 
     var dataSearch = function dataSearch(e) {
         var value = e.target.value.toLowerCase();
+        // const choosenField = this.props.selectedField;
+
+
         var filter = data.filter(function (user) {
-            return user.author.toLowerCase().includes(value);
+            console.log('user[selectedField]', selectedField);
+            console.log('user[user]', user);
+            console.log('user[user]', user[selectedField]);
+            return user[selectedField].toLowerCase().includes(value);
         });
         update({
             data: filter,
@@ -9975,13 +9991,13 @@ exports.default = function (_ref) {
     };
 
     return _react2.default.createElement(
-        "div",
-        { className: "searchbar form-group col-sm-12" },
-        _react2.default.createElement("input", {
+        'div',
+        { className: 'searchbar form-group col-sm-12' },
+        _react2.default.createElement('input', {
             value: term,
-            type: "text",
-            className: "form-control",
-            placeholder: "Search people by name...",
+            type: 'text',
+            className: 'form-control',
+            placeholder: 'Search people by name...',
             onChange: dataSearch
         })
     );

@@ -20,12 +20,20 @@ var App = React.createClass({
         return {
           data:  my_news,
           active: 0,
-          term: ''
+          term: '',
+          selectedField: ''
         }
     },
 
     updateData : function(config) {
         this.setState(config);
+    },
+
+    myFunction : function(index) {
+        var selectedField = index.target.value;
+        console.log('onChange -> ', selectedField);
+        this.setState({selectedField: selectedField});
+        console.log(this.state);
     },
 
     render: function() {
@@ -35,12 +43,15 @@ var App = React.createClass({
                 <h3>Новости</h3>
 
                 <Dropdown
+                    onSelectValue={this.myFunction}
                     />
                 <Search
                     data={my_news}
+                    selectedField={this.state.selectedField}
                     update={this.updateData} />
                 <News
                     data={this.state.data}
+
                     update={this.updateData}/>
                 <TotalNews  data={my_news} />
                 <Comments comment={my_comments}/>
