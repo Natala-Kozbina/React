@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 var Comments = React.createClass({
   render: function() {
       var comment = this.props.comment;
-      console.log("comment - ", comment);
       var commentTemplate;
 
       if(comment.length > 0) {
@@ -24,8 +23,5 @@ var Comments = React.createClass({
   }
 
 });
-
-
-
 
 export default Comments;

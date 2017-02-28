@@ -8,6 +8,7 @@ import myComments from '../datas/datas_commets.js';
 import Comments from '../comments/comments.js';
 import TotalNews from '../total_news/total_news.js';
 import Search from '../search/search.js';
+import Dropdown from '../dropdown/dropdown.js';
 
 var my_news = myNews;
 var my_comments = myComments;
@@ -23,16 +24,14 @@ var App = React.createClass({
     },
 
     updateData : function(config) {
-        // console.log('updateData/config - ', config);
         this.setState(config);
-        console.log('this.state - ', this.state);
-        // return config;
     },
 
     render: function() {
         return (
             <div className="app_header">
                 Всем привет, я компонент App!
+                <Dropdown />
                 <Search
                     data={my_news}
                     update={this.updateData} />

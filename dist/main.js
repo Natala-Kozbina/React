@@ -9495,11 +9495,15 @@ var _search = __webpack_require__(87);
 
 var _search2 = _interopRequireDefault(_search);
 
+var _dropdown = __webpack_require__(190);
+
+var _dropdown2 = _interopRequireDefault(_dropdown);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var my_news = _datas_news2.default;
 // import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
-var my_news = _datas_news2.default;
 var my_comments = _datas_commets2.default;
 
 var App = _react2.default.createClass({
@@ -9515,10 +9519,7 @@ var App = _react2.default.createClass({
     },
 
     updateData: function updateData(config) {
-        // console.log('updateData/config - ', config);
         this.setState(config);
-        console.log('this.state - ', this.state);
-        // return config;
     },
 
     render: function render() {
@@ -9526,6 +9527,7 @@ var App = _react2.default.createClass({
             'div',
             { className: 'app_header' },
             '\u0412\u0441\u0435\u043C \u043F\u0440\u0438\u0432\u0435\u0442, \u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 App!',
+            _react2.default.createElement(_dropdown2.default, null),
             _react2.default.createElement(_search2.default, {
                 data: my_news,
                 update: this.updateData }),
@@ -9566,7 +9568,6 @@ var Comments = _react2.default.createClass({
 
     render: function render() {
         var comment = this.props.comment;
-        console.log("comment - ", comment);
         var commentTemplate;
 
         if (comment.length > 0) {
@@ -9669,8 +9670,6 @@ var News = _react2.default.createClass({
         var data = this.props.data;
         var update = this.props.update;
         var newsTemplate;
-        console.log('data - ', data);
-        console.log('update/update - ', update);
 
         if (data.length > 0) {
             newsTemplate = data.map(function (item, index) {
@@ -9765,37 +9764,26 @@ exports.default = function (_ref) {
         data = _ref.data,
         update = _ref.update;
 
-    // console.log('update -> ',update);
     var dataSearch = function dataSearch(e) {
         var value = e.target.value.toLowerCase();
-        console.log('value - ', value);
         var filter = data.filter(function (user) {
-            // console.log('user - ', user);
-            // console.log('user.author - ', user.author.toLowerCase().includes(value));
-            // return user.author;
             return user.author.toLowerCase().includes(value);
         });
-        console.log('filter - ', filter);
-        // update({
-        //     data: filter,
-        //     active: 0,
-        //     term: value
-        // });
-        console.log('update - ', update({
+        update({
             data: filter,
             active: 0,
             term: value
-        }));
+        });
     };
 
     return _react2.default.createElement(
-        'div',
-        { className: 'searchbar form-group col-sm-12' },
-        _react2.default.createElement('input', {
+        "div",
+        { className: "searchbar form-group col-sm-12" },
+        _react2.default.createElement("input", {
             value: term,
-            type: 'text',
-            className: 'form-control',
-            placeholder: 'Search people by name...',
+            type: "text",
+            className: "form-control",
+            placeholder: "Search people by name...",
             onChange: dataSearch
         })
     );
@@ -22095,6 +22083,79 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _reactDom2.default.render(_react2.default.createElement(_app_start2.default, null), document.getElementById('react'));
 __webpack_require__(33);
+
+/***/ }),
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(17);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(21);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Dropdown = _react2.default.createClass({
+    displayName: 'Dropdown',
+
+
+    myFunction: function myFunction(e) {
+        console.log(777);
+        console.log('e - ', e);
+
+        // const value = e.target.value.toLowerCase();
+        // console.log('value - ', value);
+    },
+
+    render: function render(e) {
+        // console.log();
+        var data = this.props.data;
+        // const value = e.target.value.toLowerCase();
+
+        return _react2.default.createElement(
+            'div',
+            { className: 'dropdown' },
+            _react2.default.createElement(
+                'button',
+                {
+                    onClick: this.myFunction,
+                    className: 'dropbtn'
+                },
+                '\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u043B\u0435'
+            ),
+            _react2.default.createElement(
+                'div',
+                { className: 'dropdown-content' },
+                _react2.default.createElement(
+                    'a',
+                    { href: '#' },
+                    'Autor'
+                ),
+                _react2.default.createElement(
+                    'a',
+                    { href: '#' },
+                    'News'
+                )
+            )
+        );
+    }
+});
+
+exports.default = Dropdown;
 
 /***/ })
 /******/ ]);

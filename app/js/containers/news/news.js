@@ -6,8 +6,6 @@ var News = React.createClass({
         var data = this.props.data;
         var update = this.props.update;
         var newsTemplate;
-        console.log('data - ', data);
-        console.log('update/update - ', update);
 
         if(data.length >0) {
             newsTemplate = data.map(function(item, index) {
