@@ -9826,7 +9826,7 @@ var Dropdown = _react2.default.createClass({
                     title: 'Choose one of the following...' },
                 _react2.default.createElement(
                     'option',
-                    { className: 'dropdown-item' },
+                    { className: 'dropdown-item', selected: true, disabled: true },
                     '\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u043B\u0435'
                 ),
                 _react2.default.createElement(
