@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import  './news.scss';
 
 var News = React.createClass({
     render: function() {
@@ -25,11 +26,11 @@ var News = React.createClass({
 
         return (
             <div className="news">
-            <table className="app_table table-striped table-bordered">
+            <table className="app_table">
                 <thead className={data.length > 0 ? "" : "none"}>
                     <tr>
                         <th>N</th>
-                        <th>Autor</th>
+                        <th>Author</th>
                         <th>News</th>
                     </tr>
                 </thead>

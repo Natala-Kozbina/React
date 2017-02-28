@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import  './total_news.scss';
 
 var TotalNews = React.createClass({
 

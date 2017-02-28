@@ -9,6 +9,7 @@ import Comments from '../comments/comments.js';
 import TotalNews from '../total_news/total_news.js';
 import Search from '../search/search.js';
 import Dropdown from '../dropdown/dropdown.js';
+import  './app_start.scss';
 
 var my_news = myNews;
 var my_comments = myComments;
@@ -30,8 +31,11 @@ var App = React.createClass({
     render: function() {
         return (
             <div className="app_header">
-                Всем привет, я компонент App!
-                <Dropdown />
+
+                <h3>Новости</h3>
+
+                <Dropdown
+                    />
                 <Search
                     data={my_news}
                     update={this.updateData} />

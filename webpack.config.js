@@ -30,7 +30,7 @@ module.exports = {
             test: /\.scss$|.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                        use: ['css-loader', 'sass-loader?sourceMap']
+                        use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
                     })
             },
             {
@@ -45,6 +45,14 @@ module.exports = {
                     name: 'img/[name].[ext]'
                 }
             },
+            {
+            test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: 'fonts/[name].[ext]'
+            }
+          }
         ]
   },
   plugins: [
