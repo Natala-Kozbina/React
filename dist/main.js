@@ -9539,13 +9539,26 @@ var App = _react2.default.createClass({
                 null,
                 '\u041D\u043E\u0432\u043E\u0441\u0442\u0438'
             ),
-            _react2.default.createElement(_dropdown2.default, {
-                onSelectValue: this.myFunction
-            }),
-            _react2.default.createElement(_search2.default, {
-                data: my_news,
-                selectedField: this.state.selectedField,
-                update: this.updateData }),
+            _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: ' col-md-2' },
+                    _react2.default.createElement(_dropdown2.default, {
+
+                        onSelectValue: this.myFunction
+                    })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: ' col-md-6' },
+                    _react2.default.createElement(_search2.default, {
+                        data: my_news,
+                        selectedField: this.state.selectedField,
+                        update: this.updateData })
+                )
+            ),
             _react2.default.createElement(_news2.default, {
                 data: this.state.data,
 

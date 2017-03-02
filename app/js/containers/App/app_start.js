@@ -39,14 +39,20 @@ var App = React.createClass({
             <div className="app_header">
 
                 <h3>Новости</h3>
+                <div className="container">
+                    <div className=" col-md-2">
+                    <Dropdown
 
-                <Dropdown
-                    onSelectValue={this.myFunction}
-                    />
-                <Search
-                    data={my_news}
-                    selectedField={this.state.selectedField}
-                    update={this.updateData} />
+                        onSelectValue={this.myFunction}
+                        />
+                    </div>
+                    <div className=" col-md-6">
+                    <Search
+                        data={my_news}
+                        selectedField={this.state.selectedField}
+                        update={this.updateData} />
+                        </div>
+                </div>
                 <News
                     data={this.state.data}
 
