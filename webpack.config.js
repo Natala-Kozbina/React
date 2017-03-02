@@ -8,7 +8,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     watch: true,
-    entry: './app/js/app.js',
+    entry: [
+        //'webpack-dev-server/client?' + host,
+        'webpack/hot/only-dev-server',
+        './app/js/app.js'
+    ],
     output: {
         path: path.join(__dirname, './dist'),
         filename: 'main.js',
@@ -60,4 +64,9 @@ module.exports = {
       new ExtractTextPlugin('style.css'),
       new CleanWebpackPlugin(['dist'])
   ]
+    // devServer: {
+    //     port: 8080,
+    //     inline: true,
+    //     hot: true
+    // }
 }

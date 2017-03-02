@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import  './dropdown.scss';
-// import { FormControl } from 'react-bootstrap';
-// import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 var Dropdown = React.createClass({
