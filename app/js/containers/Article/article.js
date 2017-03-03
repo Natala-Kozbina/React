@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import myArticle from '../datas/datas_article.js';
-import GotoHome from '../goto_home/goto_home.js';
+import GotoHome from './goto_home/goto_home.js';
 import  './article.scss';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import News from '../news/news.js';
+import News from './news/news.js';
 import myNews from '../datas/datas_news.js';
 import myComments from '../datas/datas_commets.js';
-import Comments from '../comments/comments.js';
-import TotalNews from '../total_news/total_news.js';
-import Search from '../search/search.js';
-import Dropdown from '../dropdown/dropdown.js';
-import GotoButton from '../goto_button/goto_button.js';
+import Comments from './comments/comments.js';
+import TotalNews from './total_news/total_news.js';
+import Search from './search/search.js';
+import Dropdown from './dropdown/dropdown.js';
+import GotoButton from './goto_article/goto_article.js';
 import  './app_start.scss';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
