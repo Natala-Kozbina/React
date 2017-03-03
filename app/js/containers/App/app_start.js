@@ -42,8 +42,8 @@ var App = React.createClass({
 
     render: function() {
         return (
-            <div className="app_header">
-                <GotoButton
+            <div className="app_header container">
+                <GotoButton className="container"
                     gotoArtical={this.gotoArtical}/>
                 <h3>Новости</h3>
                 <div className="container">
@@ -52,7 +52,7 @@ var App = React.createClass({
                         onSelectValue={this.myFunction}
                         />
                     </div>
-                    <div className=" col-md-7">
+                    <div className=" col-md-10">
                     <Search
                         data={my_news}
                         selectedField={this.state.selectedField}

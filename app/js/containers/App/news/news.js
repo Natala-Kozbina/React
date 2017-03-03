@@ -25,13 +25,13 @@ var News = React.createClass({
         }
 
         return (
-            <div className="news">
+            <div className="news container">
             <table className="app_table">
                 <thead className={data.length > 0 ? "" : "none"}>
                     <tr>
-                        <th>N</th>
-                        <th>Author</th>
-                        <th>News</th>
+                        <th className=" col-md-1">N</th>
+                        <th className=" col-md-3">Author</th>
+                        <th className=" col-md-8">News</th>
                     </tr>
                 </thead>
                 {newsTemplate}

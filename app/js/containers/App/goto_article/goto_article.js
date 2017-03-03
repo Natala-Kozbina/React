@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import  './goto_article.scss';
 
 var GotoButton = React.createClass({
 
@@ -9,7 +10,7 @@ var GotoButton = React.createClass({
             <button
                 type="button"
                 onClick={this.props.gotoArtical}
-                className="btn btn-sm btn-primary pull-right">
+                className="btn btn-sm btn-primary pull-right goto-article__position">
                 Artical
                 </button>
             );
