@@ -12,9 +12,10 @@ var Dropdown = React.createClass({
                     onChange={this.props.onSelectValue}
                     className=" btn-primary btn "
                     type="button"
+                    defaultValue="Выберите поле"
                     data-toggle="dropdown"
                     title="Choose one of the following...">
-                    <option className="dropdown-item" value="" defaultValue disabled>Выберите поле</option>
+                    <option className="dropdown-item" value="Выберите поле" disabled>Выберите поле</option>
                     <option className="dropdown-item" value="author">Author</option>
                     <option className="dropdown-item" value="news">News</option>
                 </select>
