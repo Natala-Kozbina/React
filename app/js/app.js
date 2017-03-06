@@ -7,14 +7,14 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import App from './containers/app/app_start.js';
 import Article from './containers/Article/article.js';
+import NewItem from './containers/New_Item/New_Item.js';
 import appRoutes from './router.js';
 
-
-const Dispatcher = require('flux').Dispatcher;
-
 ReactDOM.render(
-    <Router history={browserHistory} routes={appRoutes} />,
+    // <Router history={browserHistory} routes={appRoutes} />,
     // <App />,
+    // <Article />,
+    <NewItem />,
     document.getElementById('react')
 );
 

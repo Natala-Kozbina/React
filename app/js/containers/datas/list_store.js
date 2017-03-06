@@ -1,16 +1,39 @@
 import myNews from './datas_news.js';
 import myComments from './datas_commets.js';
 import myArticle from './datas_article.js';
+import assign from 'object-assign';
+import { EventEmitter } from 'events';
 
+import AppDispatcher from '../../AppDispatcher.js';
 
-var ListStore = {
+var ListStore =  assign({}, EventEmitter.prototype,{
 
-   // Actual collection of model data
-    items: [],
+    items: [
+        {
+            id: 1,
+            value: 'Nata'
+        }
+    ],
 
-   // Accessor method we'll use later
+    getAll: function() {
+        return this.items;
+    },
+
     getMyNews: function() {
         return myNews;
+    },
+
+    emitChange: function(data) {
+        console.log('emitChange data -> ', data);
+        this.emit(data);
+    },
+
+    removeChangeListener: function(callback) {
+        this.removeListener('change', callback);
+    },
+
+    addChangeListener: function(callback) {
+        this.on('change', callback);
     },
 
     getMyComments: function() {
@@ -20,6 +43,33 @@ var ListStore = {
     getMyArticle: function() {
         return myArticle;
     }
-}
+});
+
+ListStore.dispatcherIndex = AppDispatcher.register(function(payload) {
+
+});
+
+AppDispatcher.register(function(payload) {
+  var action = payload.action;
+  console.log('payload -> ', payload);
+  switch(payload.eventName) {
+    case 'new-item':
+      // Вызвать внутренний метод на основании полученного Действия
+       console.log('ListStore -> ', ListStore);
+       ListStore.items.push(payload.newItem);
+       console.log('paListStoreyload -> ', ListStore);
+       ListStore.emitChange('change');
+      break;
+
+    default:
+      return true;
+  }
+
+  // Если Действие было обработано, создать событие "change"
+  // ListStore.emitChange('change');
+
+  return true;
+
+});
 
 export default ListStore;

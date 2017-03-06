@@ -6,12 +6,13 @@ var GotoButton = React.createClass({
 
     render: function() {
         var data = this.props.data;
+        console.log('data -> ', this.props);
         return (
             <button
                 type="button"
-                onClick={this.props.gotoArtical}
+                onClick={this.props.gotoPage(this.props.namePage)}
                 className="btn btn-sm btn-primary pull-right goto-article__position">
-                Artical
+                {this.props.namePage}
                 </button>
             );
         }
