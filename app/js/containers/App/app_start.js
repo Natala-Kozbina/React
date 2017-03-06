@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AppDispatcher from '../../AppDispatcher.js';
+
 import News from './news/news.js';
-import myNews from '../datas/datas_news.js';
-import myComments from '../datas/datas_commets.js';
+import myListStore from '../datas/list_store.js';
 import Comments from './comments/comments.js';
 import TotalNews from './total_news/total_news.js';
 import Search from './search/search.js';
@@ -13,8 +14,8 @@ import  './app_start.scss';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-var my_news = myNews;
-var my_comments = myComments;
+var my_news = myListStore.getMyNews();
+var my_comments = myListStore.getMyComments();
 
 var App = React.createClass({
 
@@ -40,6 +41,15 @@ var App = React.createClass({
         browserHistory.push('article')
     },
 
+    createAuthor: function( evt ) {
+        console.log('createAuthor');
+
+        AppDispatcher.dispatch({
+            eventName: 'new-item',
+            newItem: { name: 'Marco' } // example data
+        });
+    },
+
     render: function() {
         return (
             <div className="app_header container">
@@ -62,6 +72,7 @@ var App = React.createClass({
                 <News
                     data={this.state.data}
                     update={this.updateData}/>
+                <button className="btn" onClick={ this.createAuthor }>New Author</button>
                 <TotalNews  data={my_news} />
                 <Comments comment={my_comments}/>
             </div>

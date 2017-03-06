@@ -14,6 +14,8 @@ const Dispatcher = require('flux').Dispatcher;
 
 ReactDOM.render(
     <Router history={browserHistory} routes={appRoutes} />,
+    // <App />,
     document.getElementById('react')
-)
+);
+
 require ("../css/main.scss");

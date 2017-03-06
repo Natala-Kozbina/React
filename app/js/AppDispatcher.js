@@ -8,4 +8,6 @@ AppDispatcher.handleViewAction = function(action) {
   });
 }
 
-module.exports = AppDispatcher;
+// module.exports = AppDispatcher;
+
+export default AppDispatcher;

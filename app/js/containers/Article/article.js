@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import myArticle from '../datas/datas_article.js';
+import myListStore from '../datas/list_store.js';
 import GotoHome from './goto_home/goto_home.js';
 import  './article.scss';
 
@@ -12,7 +12,7 @@ var Article = React.createClass({
     },
 
   render() {
-      var article = myArticle;
+      var article = myListStore.getMyArticle();
       var articleTemplate;
       if(article.length > 0) {
 
