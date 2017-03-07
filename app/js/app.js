@@ -11,10 +11,10 @@ import NewItem from './containers/New_Item/New_Item.js';
 import appRoutes from './router.js';
 
 ReactDOM.render(
-    // <Router history={browserHistory} routes={appRoutes} />,
+    <Router history={browserHistory} routes={appRoutes} />,
     // <App />,
     // <Article />,
-    <NewItem />,
+    // <NewItem />,
     document.getElementById('react')
 );
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import autobind from 'autobind-decorator';
+import uuid from 'uuid';
 
 import myListStore from '../datas/list_store.js';
 import GotoButton from './../goto_article/goto_article.js';
@@ -12,10 +13,10 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 class NewItem extends Component {
 
     constructor(props) {
-        console.log('constructor -> ', props);
+        // console.log('constructor -> ', props);
         super(props);
         this.state = { value: '' };
-        console.log('constructor ->', this.state);
+        // console.log('constructor ->', this.state);
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class NewItem extends Component {
     gotoPage(data) {
         return function () {
             if(data != "home") {
-                console.log('gotoPage', data);
+                // console.log('gotoPage', data);
                 browserHistory.push(data);
             }else {
                 browserHistory.push('/');
@@ -39,20 +40,19 @@ class NewItem extends Component {
 
     //  @autobind
      handleChange({ target: { value } }) {
-         console.log('handleChange -> ', value );
-         console.log('this.state -> ', this.state );
+        //  console.log('handleChange -> ', value );
+        //  console.log('this.state -> ', this.state );
         //  console.log('autobind -> ', autobind );
         this.setState({ value });
     }
 
     createAuthor( e, value ) {
         e.preventDefault();
-
-        console.log('createAuthor -> ', value);
+        // console.log('createAuthor -> ', value);
         AppDispatcher.dispatch({
             eventName: 'new-item',
             newItem: {
-                id: 2,
+                id: uuid(),
                 value: this.state.value } // example data
         });
     }

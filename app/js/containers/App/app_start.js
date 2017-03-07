@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import AppDispatcher from '../../AppDispatcher.js';
@@ -17,34 +17,46 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 var my_news = myListStore.getMyNews();
 var my_comments = myListStore.getMyComments();
 
-var App = React.createClass({
+class App extends Component {
 
-    getInitialState : function() {
-        return {
-          data:  my_news,
-          active: 0,
-          term: '',
-          selectedField: ''
-       }
-    },
+  constructor(props) {
+      // console.log('constructor -> ', props);
+      super(props);
+      this.state = {
+        data:  my_news,
+        active: 0,
+        term: '',
+        selectedField: ''
+     };
+      console.log('constructor ->', this.state);
+  }
 
-    updateData : function(config) {
+    // getInitialState () {
+    //     return {
+    //       data:  my_news,
+    //       active: 0,
+    //       term: '',
+    //       selectedField: ''
+    //    }
+    // }
+
+    updateData (config) {
         this.setState(config);
-    },
+    }
 
-    selectField : function(index) {
+    selectField (index) {
         var selectedField = index.target.value;
         this.setState({selectedField: selectedField});
-    },
+    }
 
-    gotoPage: function(data) {
+    gotoPage (data) {
         return function () {
             console.log('gotoPage', data);
             browserHistory.push(data);
         }
-    },
+    }
 
-    render: function() {
+    render () {
         return (
             <div className="app_header container">
                 <GotoButton
@@ -61,13 +73,13 @@ var App = React.createClass({
                 <div className="container">
                     <div className=" col-md-2">
                         <Dropdown
-                            onSelectValue={this.selectField}/>
+                            onSelectValue={this.selectField.bind(this)}/>
                     </div>
                     <div className=" col-md-10">
                         <Search
                             data={my_news}
                             selectedField={this.state.selectedField}
-                            update={this.updateData} />
+                            update={this.updateData.bind(this)} />
                     </div>
                 </div>
                 <News
@@ -78,6 +90,6 @@ var App = React.createClass({
             </div>
         );
     }
-});
+};
 
 export default App;

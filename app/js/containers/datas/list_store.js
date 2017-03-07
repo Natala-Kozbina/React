@@ -2,15 +2,17 @@ import myNews from './datas_news.js';
 import myComments from './datas_commets.js';
 import myArticle from './datas_article.js';
 import assign from 'object-assign';
+import uuid from 'uuid';
 import { EventEmitter } from 'events';
 
 import AppDispatcher from '../../AppDispatcher.js';
+console.log('uuid -> ', uuid);
 
 var ListStore =  assign({}, EventEmitter.prototype,{
 
     items: [
         {
-            id: 1,
+            id: uuid(),
             value: 'Nata'
         }
     ],
@@ -57,7 +59,7 @@ AppDispatcher.register(function(payload) {
       // Вызвать внутренний метод на основании полученного Действия
        console.log('ListStore -> ', ListStore);
        ListStore.items.push(payload.newItem);
-       console.log('paListStoreyload -> ', ListStore);
+       console.log('ListStore.items -> ', ListStore.items);
        ListStore.emitChange('change');
       break;
 
