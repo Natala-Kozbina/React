@@ -6,7 +6,7 @@ var GotoButton = React.createClass({
 
     render: function() {
         var data = this.props.data;
-        console.log('data -> ', this.props);
+        // console.log('data -> ', this.props);
         return (
             <button
                 type="button"

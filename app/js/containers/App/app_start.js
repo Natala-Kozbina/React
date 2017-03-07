@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import AppDispatcher from '../../AppDispatcher.js';
-
 import News from './news/news.js';
 import myListStore from '../datas/list_store.js';
 import Comments from './comments/comments.js';
@@ -11,47 +9,38 @@ import Search from './search/search.js';
 import Dropdown from './dropdown/dropdown.js';
 import GotoButton from './../goto_article/goto_article.js';
 import  './app_start.scss';
-
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-
-var my_news = myListStore.getMyNews();
-var my_comments = myListStore.getMyComments();
 
 class App extends Component {
 
-  constructor(props) {
-      // console.log('constructor -> ', props);
-      super(props);
-      this.state = {
-        data:  my_news,
-        active: 0,
-        term: '',
-        selectedField: ''
-     };
-      console.log('constructor ->', this.state);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+          data:  myListStore.myNews,
+          active: 0,
+          term: '',
+          selectedField: ''
+        };
+      }
 
-    // getInitialState () {
-    //     return {
-    //       data:  my_news,
-    //       active: 0,
-    //       term: '',
-    //       selectedField: ''
-    //    }
-    // }
-
-    updateData (config) {
-        this.setState(config);
+    updateData(config ) {
+        this.state.data = config.data;
+        console.log('updateData -> ', this.state.data );
+        console.log('config -> ', config.data);
+        AppDispatcher.dispatch({
+            eventName: 'search',
+            newItem: config.data
+          });
     }
 
     selectField (index) {
         var selectedField = index.target.value;
         this.setState({selectedField: selectedField});
+        console.log('this.state -> ', this.state);
     }
 
     gotoPage (data) {
         return function () {
-            console.log('gotoPage', data);
             browserHistory.push(data);
         }
     }
@@ -77,16 +66,16 @@ class App extends Component {
                     </div>
                     <div className=" col-md-10">
                         <Search
-                            data={my_news}
+                            data={this.state.data}
                             selectedField={this.state.selectedField}
                             update={this.updateData.bind(this)} />
                     </div>
                 </div>
                 <News
                     data={this.state.data}
-                    update={this.updateData}/>
-                <TotalNews  data={my_news} />
-                <Comments comment={my_comments}/>
+                    update={this.updateData.bind(this)}/>
+                <TotalNews  data={this.state.data} />
+                <Comments comment={myListStore.myComments}/>
             </div>
         );
     }

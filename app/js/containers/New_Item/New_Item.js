@@ -13,10 +13,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 class NewItem extends Component {
 
     constructor(props) {
-        // console.log('constructor -> ', props);
         super(props);
         this.state = { value: '' };
-        // console.log('constructor ->', this.state);
     }
 
     componentDidMount() {
@@ -30,7 +28,6 @@ class NewItem extends Component {
     gotoPage(data) {
         return function () {
             if(data != "home") {
-                // console.log('gotoPage', data);
                 browserHistory.push(data);
             }else {
                 browserHistory.push('/');
@@ -58,9 +55,7 @@ class NewItem extends Component {
     }
 
     renderTodo() {
-        return myListStore.getAll().map(({ value, id}) => (
-            // console.log('value -> ', value);
-            // console.log('id -> ', id);
+        return myListStore.items.map(({ value, id}) => (
             <li key={ id } data-id={ id }>{ value }</li>
         ));
     }

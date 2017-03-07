@@ -23,7 +23,7 @@ var Article = React.createClass({
     },
 
   render() {
-      var article = myListStore.getMyArticle();
+      var article = myListStore.myArticle;
       var articleTemplate;
       if(article.length > 0) {
 
