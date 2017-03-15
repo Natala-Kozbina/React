@@ -10,5 +10,5 @@ export default (
       <IndexRoute component={App} />
       <Route path='/article' component={Article} />
       <Route path='/newItem' component={NewItem} />
-  </Route>
+    </Route>
 );

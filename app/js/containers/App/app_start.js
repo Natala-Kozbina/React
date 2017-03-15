@@ -19,24 +19,40 @@ class App extends Component {
           data:  myListStore.myNews,
           active: 0,
           term: '',
-          selectedField: ''
+          selectedField: '',
+          value: ''
         };
+        console.log('this.state -> ', this.state);
       }
 
-    updateData(config ) {
-        this.state.data = config.data;
-        console.log('updateData -> ', this.state.data );
-        console.log('config -> ', config.data);
+      componentDidMount() {
+          myListStore.addChangeListener(this.selectFieldClear.bind(this));
+      }
+
+      selectFieldClear () {
+        this.setState({
+          selectedField: '',
+          data: myListStore.myNews
+        });
+      }
+
+      updateData(config ) {
+          console.log('updateData config -> ', config);
+          console.log('updateData config.data -> ', config.data);
+          // this.setState({data: config.data});
         AppDispatcher.dispatch({
             eventName: 'search',
-            newItem: config.data
+            newItem: config.data,
+            selectedField: this.state.selectedField
           });
     }
 
     selectField (index) {
         var selectedField = index.target.value;
-        this.setState({selectedField: selectedField});
-        console.log('this.state -> ', this.state);
+        this.setState({
+          selectedField: selectedField,
+          data: myListStore.myNews
+        });
     }
 
     gotoPage (data) {

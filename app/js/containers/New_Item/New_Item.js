@@ -37,25 +37,21 @@ class NewItem extends Component {
 
     //  @autobind
      handleChange({ target: { value } }) {
-        //  console.log('handleChange -> ', value );
-        //  console.log('this.state -> ', this.state );
-        //  console.log('autobind -> ', autobind );
         this.setState({ value });
     }
 
     createAuthor( e, value ) {
         e.preventDefault();
-        // console.log('createAuthor -> ', value);
         AppDispatcher.dispatch({
             eventName: 'new-item',
             newItem: {
                 id: uuid(),
-                value: this.state.value } // example data
+                value: this.state.value }
         });
     }
 
     renderTodo() {
-        return myListStore.items.map(({ value, id}) => (
+        return myListStore.myItem.map(({ value, id}) => (
             <li key={ id } data-id={ id }>{ value }</li>
         ));
     }
@@ -78,7 +74,9 @@ class NewItem extends Component {
                     <form>
                         <input
                             value={ this.state.value }
-                            onChange={ this.handleChange.bind(this) } />
+                            onChange={ this.handleChange.bind(this) }
+                            autoFocus
+                            />
                         <button
                             className="btn btn-sm btn-primary pull-right"
                             onClick={ this.createAuthor.bind(this) }>New Author</button>

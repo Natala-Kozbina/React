@@ -10,7 +10,7 @@ import AppDispatcher from '../../AppDispatcher.js';
 
 var ListStore =  assign({}, EventEmitter.prototype,{
 
-    items: myItem,
+    myItem: myItem,
     myNews: myNews,
     myComments: myComments,
     myArticle: myArticle,
@@ -20,12 +20,18 @@ var ListStore =  assign({}, EventEmitter.prototype,{
         this.emit(data);
     },
 
+    getMyNews () {
+      ListStore.myNews = myNews;
+      console.log('getMyNews -> ListStore.myNews -> ', ListStore.myNews);
+      return myNews;
+    },
+
     // removeChangeListener: function(callback) {
     //     this.removeListener('change', callback);
     // },
 
     addChangeListener: function(callback) {
-        console.log('addChangeListener callback -> ', callback);
+        // console.log('addChangeListener callback -> ', callback);
         this.on('change', callback);
     }
 });
@@ -39,20 +45,20 @@ AppDispatcher.register(function(payload) {
 
     switch(payload.eventName) {
       case 'new-item':
-          ListStore.items.push(payload.newItem);
-          console.log(' new-item -> payload.newItem -> ', payload.newItem);
+          console.log(' new-item -> ListStore.items BEFORE -> ',  ListStore.myItem);
+          ListStore.myItem.push(payload.newItem);
+          console.log(' new-item -> ListStore.items AFTER -> ',  ListStore.myItem);
           ListStore.emitChange('change');
           break;
       case 'search':
-        console.log('search -> ListStore.myNews BEFORE -> ', ListStore.myNews);
-         ListStore.myNews = payload.newItem;
-         console.log('search -> ListStore.myNews  AFTER-> ', ListStore.myNews);
-         ListStore.emitChange('change');
-
-         break;
-    default:
-     console.log('search -> ListStore.myNews  AFTER / AFTER-> ', ListStore.myNews)
-      return true;
+          console.log('search -> ListStore.myNews BEFORE -> ', ListStore.myNews);
+          ListStore.myNews = payload.newItem;
+          console.log('search -> ListStore.myNews  AFTER-> ', ListStore.myNews);
+          ListStore.emitChange('change');
+          break;
+      default:
+        console.log('search -> ListStore.myNews  AFTER / AFTER-> ', ListStore.myNews)
+        return true;
   }
   // ListStore.emitChange('change');
   return true;
